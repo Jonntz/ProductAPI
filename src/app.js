@@ -9,7 +9,8 @@ const cors = require("cors");
 
 
 app.use(function (req, res, next) {
-    const allowedOrigins = ['https://localhost:3000', 'https://productapi-lzfn.onrender.com:10000'];
+    const allowedOrigins = ['https://localhost', 'https://productapi-lzfn.onrender.com'];
+
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);
@@ -32,7 +33,7 @@ app.use(cors(
 dotenv.config();
 
 app.use(express.json());
-app.use('/products', productRoutes);
+app.use('/products', cors(), productRoutes);
 
 // Adicione a rota de documentação do Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
