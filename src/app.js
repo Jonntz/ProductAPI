@@ -9,7 +9,7 @@ const cors = require("cors");
 
 
 app.use(function (req, res, next) {
-    const allowedOrigins = ['http://localhost:3000', 'https://productapi-lzfn.onrender.com:10000'];
+    const allowedOrigins = ['https://localhost:3000', 'https://productapi-lzfn.onrender.com:10000'];
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);

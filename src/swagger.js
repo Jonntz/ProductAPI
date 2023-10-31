@@ -6,7 +6,7 @@ const swaggerDefinition = {
         version: '1.0.0',
         description: 'API para gerenciar produtos usando PrismaORM e Supabase',
     },
-    host: 'https://productapi-lzfn.onrender.com:10000', // Substitua pelo seu host e porta
+    host: 'https://productapi-lzfn.onrender.com', // Substitua pelo seu host e porta
     basePath: '/',
 };
 
