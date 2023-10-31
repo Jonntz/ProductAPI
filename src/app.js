@@ -7,7 +7,27 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
 const cors = require("cors");
 
-app.use(cors());
+
+app.use(function (req, res, next) {
+    const allowedOrigins = ['http://localhost:3000', 'https://productapi-lzfn.onrender.com:10000'];
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+app.use(cors(
+    {
+        origin: "*",
+        methods: ["GET", "POST", "DELETE", "UPDATE", "PUT"],
+        credentials: true,
+    }
+));
+
 dotenv.config();
 
 app.use(express.json());
